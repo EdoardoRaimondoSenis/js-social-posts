@@ -56,17 +56,39 @@ const posts = [
     }
 ];
 
-let likebutton = document.querySelector(".like-button__label");
+let contpost = document.getElementById("container");
 
-likebutton.addEventListener("click",
-    function () {
-        likebutton.classList.toggle("like-button--liked");
-        
-        posts.forEach((nuovolike) => {
-            nuovolike.likes = nuovolike++;
-        }
-    );
-    const likeagg = posts.map(nuovolike);
-    
-    }
+
+posts.forEach((element, index) => {
+    let imgIcon = document.createElement("img");
+    imgIcon.src = posts[0].author.image;
+    console.log(imgIcon);
+    let metaIcon = `<div class="post-meta__icon">${imgIcon}</div>`;
+    let postMeta = `<div class="post__meta">${metaIcon}</div>`;
+    let postHeader = `<div class="post__header">${postMeta}</div>`;
+    let post = `<div class="post">${postHeader}</div>`;
+    contpost.innerHTML += post;
+}
 );
+
+
+
+// let likebutton = document.querySelector(".like-button__label");
+// console.log(postslikes);
+
+// likebutton.addEventListener("click",
+//     function () {
+//         likebutton.classList.toggle("like-button--liked");
+        
+//         for (let i = 0; i < posts.length; i++) {
+//             const nuovolike = posts[i];
+//             console.log(nuovolike);
+
+//             let likeagg;
+//             nuovolike.likes = likeagg++;
+//             console.log(likeagg);
+//         }
+    
+    
+//     }
+// );
