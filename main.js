@@ -7,7 +7,7 @@ const posts = [
             "name": "Phil Mangione",
             "image": "https://unsplash.it/300/300?image=15"
         },
-        "likes": 80,
+        "likes": "80",
         "created": "2021-06-25"
     },
     {
@@ -18,7 +18,7 @@ const posts = [
             "name": "Sofia Perlari",
             "image": "https://unsplash.it/300/300?image=10"
         },
-        "likes": 120,
+        "likes": "120",
         "created": "2021-09-03"
     },
     {
@@ -29,7 +29,7 @@ const posts = [
             "name": "Chiara Passaro",
             "image": "https://unsplash.it/300/300?image=20"
         },
-        "likes": 78,
+        "likes": "78",
         "created": "2021-05-15"
     },
     {
@@ -40,7 +40,7 @@ const posts = [
             "name": "Luca Formicola",
             "image": null
         },
-        "likes": 56,
+        "likes": "56",
         "created": "2021-04-03"
     },
     {
@@ -51,7 +51,7 @@ const posts = [
             "name": "Alessandro Sainato",
             "image": "https://unsplash.it/300/300?image=29"
         },
-        "likes": 95,
+        "likes": "95",
         "created": "2021-03-05"
     }
 ];
@@ -92,28 +92,26 @@ posts.forEach((element) => {
                 </div> 
             </div>            
         </div>`
-
-        posts.forEach((element) => {
-
-            let likeButton = document.querySelector(".like-button");
-            likeButton = element.likes;
-            let numberLikes = document.getElementById("like-counter-1");
-        
-            likeButton.addEventListener("click",
-                function () {
-                    likeButton.classList.toggle("like-button--liked");
-                    numberLikes++;
-                    console.log(element);
-        
-                }
-            );
-        
-        
-        });
-        
         
     }
 );
 
 
+let likeButton = document.querySelectorAll(".like-button");
 
+let numberLikes = document.querySelectorAll(".js-likes-counter");
+
+for (let i = 0; i < likeButton.length; i++) {
+    let likeButtonAgg = likeButton[i]
+    let numberLikesTake = numberLikes[i];
+    
+    likeButtonAgg.addEventListener("click",
+        function (scroll) {
+            scroll.preventDefault();
+            likeButtonAgg.classList.toggle("like-button--liked");
+            let numberLikesAgg = parseInt(numberLikesTake.innerHTML);
+            numberLikesAgg = numberLikesAgg + 1;
+            numberLikesTake.innerHTML = numberLikesAgg;
+        }
+    );
+}
